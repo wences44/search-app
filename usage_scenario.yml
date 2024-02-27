@@ -1,0 +1,21 @@
+# We need an explicit networks part, as we do not auto-generate networks for containers
+networks:
+  network1: x-network
+
+services:
+# There is no container_name directive. All services keys act directly as container names
+  single-container:
+    image: python-search
+    container_name: python-search
+    
+# networks must be explicitly stated in each service
+    networks:
+      - network1
+  
+flow:
+ - name: search
+    container: python-search
+    commands:
+      - type: console
+        command: python search.py
+        note: Starting search
