@@ -14,7 +14,7 @@ services:
   
 flow:
  - name: search
-    container: python-search
+    container: single-container
     commands:
       - type: console
         command: python search.py
